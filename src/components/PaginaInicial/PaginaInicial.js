@@ -14,7 +14,20 @@ export default class PaginaInicial extends React.Component {
     carrinho: [],
     carrinhoAberto: false
   }
+// reservado para logica do carrinho
 
+
+
+
+
+
+
+
+
+
+
+
+// 
 
   renderizaCarrinho =  () => {
     let resultado = 0;
