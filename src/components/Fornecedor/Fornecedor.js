@@ -14,12 +14,15 @@ class Fornecedor extends React.Component {
 
   state = {
     produtos: [],
+    fotos: [],
     nomeProduto: "",
     descricao: "",
     preco: 0,
     pagMetodo: "",
     categoria: "",
-    fotos: [],
+    urlFoto1: "",
+    urlFoto2: "",
+    urlFoto3: "",
     parcelas: 0,
   }
 
@@ -38,8 +41,14 @@ class Fornecedor extends React.Component {
   onChangeCategoriaInput = (e) => {
     this.setState({categoria: e.target.value})
   }
-  onChangeFotosInput = (e) => {
-    this.setState({fotos: e.target.value})
+  onChangeFoto1Input = (e) => {
+    this.setState({urlFoto1: e.target.value})
+  }
+  onChangeFoto2Input = (e) => {
+    this.setState({urlFoto2: e.target.value})
+  }
+  onChangeFoto3Input = (e) => {
+    this.setState({urlFoto3: e.target.value})
   }
   onChangeParcelasInput = (e) => {
     this.setState({parcelas: e.target.value})
@@ -52,7 +61,9 @@ class Fornecedor extends React.Component {
       price: this.state.preco,
       paymentMethod: this.state.pagMetodo,
       category: this.state.categoria,
-      photos: [this.state.fotos],
+      photos: this.state.urlFoto1,
+      photos: this.state.urlFoto2,
+      photos: this.state.urlFoto3,
       installments: this.state.parcelas
     }
     const request = axios.post("https://us-central1-labenu-apis.cloudfunctions.net/eloFourTwo/products", body,
@@ -66,7 +77,17 @@ class Fornecedor extends React.Component {
     request
     .then((resposta) => {
       console.log(resposta)
-      this.setState({ produtos: resposta.data })
+      this.setState({ 
+        nomeProduto: "",
+        descricao: "",
+        preco: 0,
+        pagMetodo: "",
+        categoria: "",
+        urlFoto1: "",
+        urlFoto2: "",
+        urlFoto3: "",
+        parcelas: 0,
+      })
       alert("O produto foi cadastrado com sucesso!")
     })
     .catch(error => {
@@ -120,9 +141,9 @@ class Fornecedor extends React.Component {
             <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Religiosos</option>
           </select>
           <Rotulo for="foto">Foto (URL):</Rotulo>
-          <FormInput type="url" id="foto" placeholder="Link para foto 1" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
-          <FormInput type="url" id="foto" placeholder="Link para foto 2" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
-          <FormInput type="url" id="foto" placeholder="Link para foto 3" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
+          <FormInput type="url" id="foto" placeholder="Link para foto 1" value={this.state.urlFoto1} onChange={this.onChangeFoto1Input}></FormInput>
+          <FormInput type="url" id="foto" placeholder="Link para foto 2" value={this.state.urlFoto2} onChange={this.onChangeFoto2Input}></FormInput>
+          <FormInput type="url" id="foto" placeholder="Link para foto 3" value={this.state.urlFoto3} onChange={this.onChangeFoto3Input}></FormInput>
           <p>Método de pagamento:</p>
           <Rotulo for="pag1">Cartão de crédito</Rotulo>
           <input type="checkbox" id="pag1"
