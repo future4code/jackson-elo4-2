@@ -129,13 +129,11 @@ export class AppContainer extends React.Component {
       <div>
         
         {this.state.paginaAberta === 'fornecedor' ||
-        <div>
-          <button onClick={this.abreFornecedor}>Abrir página de Fornecedor</button>
           <Header
             clickPaginaInicial={this.abrePaginaInicial}
             clickFornecedor={this.abreFornecedor}
           />
-        </div>}
+        }
         {this.renderizaPaginas()}
         <Footer/>
       </div>
