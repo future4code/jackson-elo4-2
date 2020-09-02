@@ -14,7 +14,7 @@ class Header extends React.Component {
               <input/>
               <button> Enviar </button>
             </Filtro>
-            <button> Carrinho </button>
+            <button > Carrinho </button>
             <span onClick={this.props.clickPaginaInicial}> Inicio </span>
             <span onClick={this.props.clickFornecedor}> Sou fornecedor </span>
           </div>
