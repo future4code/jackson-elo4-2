@@ -1,6 +1,13 @@
 import React from 'react';
 import axios from 'axios';
-import { DivFormulario } from './styled';
+import { 
+  DivFormulario, 
+  HeaderContainer,
+  H1,
+  BotaoCadastrar,
+  Rotulo,
+  FormInput,
+} from './styled';
 
 
 class Fornecedor extends React.Component {
@@ -45,7 +52,7 @@ class Fornecedor extends React.Component {
       price: this.state.preco,
       paymentMethod: this.state.pagMetodo,
       category: this.state.categoria,
-      photos: this.state.fotos,
+      photos: [this.state.fotos],
       installments: this.state.parcelas
     }
     const request = axios.post("https://us-central1-labenu-apis.cloudfunctions.net/eloFourTwo/products", body,
@@ -73,29 +80,33 @@ class Fornecedor extends React.Component {
   render(){
     return (
       <div>
-        <header>
-  
-          <button onClick={this.props.clickConsumidor}>Voltar para a Página Inicial</button>
-        
-        </header>
+        <HeaderContainer>
+          <div>
+            <img  src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F56dee66c-706c-46b5-bbcc-da3a26c77e13%2F3.png?table=block&id=346cc3e8-d869-469e-bf24-298de602529f&width=770&userId=&cache=v2"
+            alt="logo"
+            />
+            <button onClick={this.props.clickConsumidor}>Voltar para a Página Inicial</button>
+          </div>
+        </HeaderContainer>
+       
         <DivFormulario>
-          <h1>Cadastro de produto</h1>
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" 
+          <H1>Cadastro de produto</H1>
+          <Rotulo for="nome">Nome:</Rotulo>
+          <FormInput type="text" id="nome" 
             value={this.state.nomeProduto}
             onChange={this.onChangeNomeInput}
           />
-          <label for="desc">Descrição:</label>
-          <input type="text" id="desc"
+          <Rotulo for="desc">Descrição:</Rotulo>
+          <FormInput type="text" id="desc"
             value={this.state.descricao}
             onChange={this.onChangeDescInput}
           />
-          <label for="preco">Preço:</label>
+          <Rotulo for="preco">Preço:</Rotulo>
           <input type="number" id="preco" 
             value={this.state.preco}
             onChange={this.onChangePrecoInput}
           />
-          <label for="categoria">Categoria:</label>
+          <Rotulo for="categoria">Categoria:</Rotulo>
           <select id="categoria">
             <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Acessórios</option>
             <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Bijuteria</option>
@@ -108,36 +119,38 @@ class Fornecedor extends React.Component {
             <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Pets</option>
             <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Religiosos</option>
           </select>
-          <label for="foto">Foto (URL):</label>
-          <input type="url" id="foto" placeholder="Link para foto 1" value={this.state.fotos} onChange={this.onChangeFotosInput}></input>
-          <input type="url" id="foto" placeholder="Link para foto 2" value={this.state.fotos} onChange={this.onChangeFotosInput}></input>
-          <input type="url" id="foto" placeholder="Link para foto 3" value={this.state.fotos} onChange={this.onChangeFotosInput}></input>
+          <Rotulo for="foto">Foto (URL):</Rotulo>
+          <FormInput type="url" id="foto" placeholder="Link para foto 1" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
+          <FormInput type="url" id="foto" placeholder="Link para foto 2" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
+          <FormInput type="url" id="foto" placeholder="Link para foto 3" value={this.state.fotos} onChange={this.onChangeFotosInput}></FormInput>
           <p>Método de pagamento:</p>
-          <label for="pag1">Cartão de crédito</label>
+          <Rotulo for="pag1">Cartão de crédito</Rotulo>
           <input type="checkbox" id="pag1"
             value={this.state.pagMetodo}
             onChange={this.onChangePagInput}
           />
-          <label for="pag2">Cartão de débito</label>
+          <Rotulo for="pag2">Cartão de débito</Rotulo>
           <input type="checkbox" id="pag2"
             value={this.state.pagMetodo}
             onChange={this.onChangePagInput}
           />
-          <label for="pag3">Boleto</label>
+          <Rotulo for="pag3">Boleto</Rotulo>
           <input type="checkbox" id="pag3"
             value={this.state.pagMetodo}
             onChange={this.onChangePagInput} 
           />
-          <label for="preco">Número de parcelas:</label>
+          <Rotulo for="preco">Número de parcelas:</Rotulo>
           <input type="number" id="preco"
             value={this.state.parcelas}
             onChange={this.onChangeParcelasInput}
           />
 
-          <button onClick={this.adicionarProdutos}>CADASTRAR</button>
+          <BotaoCadastrar onClick={this.adicionarProdutos}>CADASTRAR</BotaoCadastrar>
 
 
         </DivFormulario>
+
+  
 
       </div>
     );
