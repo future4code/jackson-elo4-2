@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { DivFormulario } from './styled'
+import { DivFormulario } from './styled';
 
 
 class Fornecedor extends React.Component {
@@ -13,7 +13,7 @@ class Fornecedor extends React.Component {
     pagMetodo: "",
     categoria: "",
     fotos: [],
-    parcelas: 0
+    parcelas: 0,
   }
 
   onChangeNomeInput = (e) => {
@@ -73,7 +73,11 @@ class Fornecedor extends React.Component {
   render(){
     return (
       <div>
-        <header></header>
+        <header>
+  
+          <button onClick={this.props.clickConsumidor}>Voltar para a Página Inicial</button>
+        
+        </header>
         <DivFormulario>
           <h1>Cadastro de produto</h1>
           <label for="nome">Nome:</label>
