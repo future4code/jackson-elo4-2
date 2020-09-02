@@ -75,7 +75,7 @@ export class AppContainer extends React.Component {
       case 'fornecedor':
         return (
           <Fornecedor
-            // clickConsumidor={this.abrePaginaInicial}
+            clickConsumidor={this.abrePaginaInicial}
           />
         )  
       case 'produto-unico':
@@ -127,12 +127,15 @@ export class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.abreFornecedor}>Abrir página de Fornecedor</button>
+        
         {this.state.paginaAberta === 'fornecedor' ||
-        <Header
-          clickPaginaInicial={this.abrePaginaInicial}
-          clickFornecedor={this.abreFornecedor}
-        />}
+        <div>
+          <button onClick={this.abreFornecedor}>Abrir página de Fornecedor</button>
+          <Header
+            clickPaginaInicial={this.abrePaginaInicial}
+            clickFornecedor={this.abreFornecedor}
+          />
+        </div>}
         {this.renderizaPaginas()}
         <Footer/>
       </div>
