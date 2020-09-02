@@ -3,7 +3,6 @@ import PaginaInicial from './PaginaInicial/PaginaInicial';
 import ProdutoUnico from './ProdutoUnico/ProdutoUnico';
 import CategoriaUnica from './CategoriaUnica/CategoriaUnica';
 import Fornecedor from './Fornecedor/Fornecedor';
-import Header from './Header/Header';
 import Footer from './Footer/Footer';
 
 export class AppContainer extends React.Component {
@@ -127,13 +126,6 @@ export class AppContainer extends React.Component {
   render() {
     return (
       <div>
-        
-        {this.state.paginaAberta === 'fornecedor' ||
-          <Header
-            clickPaginaInicial={this.abrePaginaInicial}
-            clickFornecedor={this.abreFornecedor}
-          />
-        }
         {this.renderizaPaginas()}
         <Footer/>
       </div>
