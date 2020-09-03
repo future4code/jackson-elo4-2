@@ -4,6 +4,13 @@ export const CategoriasContainer = styled.div`
   width: 200px;
   padding-left: 40px;
   padding-top: 30px;
+  > h3 {
+    margin-bottom: 25px;
+    cursor: pointer;
+    :hover {
+      color: #f2970b;
+    }
+  }
 `
 export const ContainerPaginaInicial = styled.div`
   display: grid;
@@ -33,4 +40,19 @@ export const HeaderCards = styled.div`
   padding-top: 20px;
   height: 50px;
   text-align: center;
+`
+export const ImgCarrinho = styled.div`
+  width: 70px;
+  height: 70px;
+  background: #5ce1e6;
+  border-radius: 50%;
+  text-align: center;
+  > img {
+    margin-top: 12px;
+  }
+  border: 1px solid gray;
+  cursor: pointer;
+  position: fixed;
+  bottom: 50px;
+  right: 50px;
 `

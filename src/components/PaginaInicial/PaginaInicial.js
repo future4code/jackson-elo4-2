@@ -1,13 +1,15 @@
 import React from 'react';
 import Carrinho from '../Carrinho/Carrinho';
 import Card from '../Card/Card';
+import CarrinhoLogo from '../../Img/carrinho-logo.svg'
 import {
   CategoriasContainer,
   ContainerPaginaInicial,
   CarrinhoContainer,
   CardsContainer,
   CardsColecao,
-  HeaderCards
+  HeaderCards,
+  ImgCarrinho
 } from './styled.js';
 
 const produtos = [
@@ -17,7 +19,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/2AEA6E0/chapeu-personalizado-1-figura-nome-ou-frase-chapeu-de-praia.jpg',
     foto3: 'https://img.elo7.com.br/product/main/2AF2C2A/chapeu-personalizado-1-figura-nome-ou-frase-chapeu-de-praia.jpg',
     titulo: 'Chapéu personalizado',
-    preco: 49.90,
+    preco: 49,
     quantidade: 1
   },
   {
@@ -26,7 +28,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/1A0252F/adesivo-de-parede-infantil-vingadores-floresta.jpg',
     foto3: 'https://img.elo7.com.br/product/main/1A02533/adesivo-de-parede-infantil-vingadores-natureza.jpg',
     titulo: 'Adesivo de parede',
-    preco: 10.00,
+    preco: 10,
     quantidade: 1
   },
   {
@@ -35,7 +37,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/zoom/2DBABFE/par-de-brincos-de-pressao-festa-longo.jpg',
     foto3: 'https://img.elo7.com.br/product/zoom/2DBABFF/par-de-brincos-de-pressao-festa-brincos-de-pressao.jpg',
     titulo: 'Brincos de strass',
-    preco: 50.00,
+    preco: 50,
     quantidade: 1
   },
   {
@@ -44,7 +46,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/2805696/robe-em-cetim-personalizado-promocao.jpg',
     foto3: 'https://img.elo7.com.br/product/main/2C78C7C/robe-em-cetim-personalizado-promocao.jpg',
     titulo: 'Robe de cetim',
-    preco: 21.00,
+    preco: 21,
     quantidade: 1
   },
   {
@@ -53,7 +55,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/1DD639E/semana-maluca-convite-de-casamento-r-0-79-meia-perola.jpg',
     foto3: 'https://img.elo7.com.br/product/main/2EAC041/promocao-convite-de-casamento.jpg',
     titulo: 'Convite de casamento',
-    preco: 33.60,
+    preco: 33,
     quantidade: 1
   },
   {
@@ -62,7 +64,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/2C43DBE/botton-lgbtq-stonewall-50-anos.jpg',
     foto3: 'https://img.elo7.com.br/product/main/30B0F2F/botton-lgbtq-marrom-e-preto-e-trans-roupas.jpg',
     titulo: 'Botton LGBTQ+',
-    preco: 4.50,
+    preco: 4,
     quantidade: 1
   },
   {
@@ -71,7 +73,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/zoom/288447F/fantasia-infantil-minions-curto.jpg',
     foto3: 'https://img.elo7.com.br/product/zoom/2933C5D/fantasia-mulher-maravilha-infantil.jpg',
     titulo: 'Fantasia Minion',
-    preco: 110.00,
+    preco: 110,
     quantidade: 1
   },
   {
@@ -80,7 +82,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/21810C7/presepio-em-gesso-15-pecas-20-cm.jpg',
     foto3: 'https://img.elo7.com.br/product/main/21810E1/presepio-em-gesso-15-pecas-20-cm.jpg',
     titulo: 'Presépio em gesso',
-    preco: 250.00,
+    preco: 250,
     quantidade: 1
   },
   {
@@ -89,7 +91,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/zoom/A02B84/pulseira-folheado-olho-grego-strass.jpg',
     foto3: 'https://img.elo7.com.br/product/zoom/A02B85/pulseira-folheado-olho-grego-moda.jpg',
     titulo: 'Pulseira olho grego',
-    preco: 70.00,
+    preco: 70,
     quantidade: 1
   },
   {
@@ -107,7 +109,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/227A48C/tag-personalizada-em-madeira-para-lembrancinhas-suculentas-convidados.jpg',
     foto3: 'https://img.elo7.com.br/product/main/227A48B/tag-personalizada-em-madeira-para-lembrancinhas-suculentas-mdf.jpg',
     titulo: 'Lembrança',
-    preco: 15.00,
+    preco: 15,
     quantidade: 1
   },
   {
@@ -116,7 +118,7 @@ const produtos = [
     foto2: 'https://img.elo7.com.br/product/main/32635FA/capa-para-o-livro-vade-mecum-personalizada-tradicional.jpg',
     foto3: 'https://img.elo7.com.br/product/main/2DDA664/capa-para-o-livro-vade-mecum-personalizada-tradicional.jpg',
     titulo: 'Livro Vade Mecum',
-    preco: 43.00,
+    preco: 43,
     quantidade: 1
   },
 ];
@@ -235,9 +237,9 @@ export default class PaginaInicial extends React.Component {
             </CardsColecao>
           </CardsContainer>
           {this.state.carrinhoAberto && this.renderizaCarrinho()}
-          <button onClick={this.alterarCarrinho}>
-            abrir carrinho
-          </button>
+          <ImgCarrinho onClick={this.alterarCarrinho}>
+            <img src={CarrinhoLogo}/>
+          </ImgCarrinho>
         </ContainerPaginaInicial>
       </div>
     );
