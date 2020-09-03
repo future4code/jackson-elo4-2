@@ -7,13 +7,14 @@ import Checkbox from '@material-ui/core/Checkbox';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
+import Logo from '../../Img/logo.png'
 import { 
   DivFormulario, 
   HeaderContainer,
   H1,
   Rotulo,
   myTheme,
-  useStyles
+  useStyles,
 } from './styled';
 
 class Fornecedor extends React.Component {
@@ -115,11 +116,15 @@ class Fornecedor extends React.Component {
       <MuiThemeProvider theme={myTheme}>
         <HeaderContainer>
           <div>
-            <img  src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F56dee66c-706c-46b5-bbcc-da3a26c77e13%2F3.png?table=block&id=346cc3e8-d869-469e-bf24-298de602529f&width=770&userId=&cache=v2"
-            alt="logo"
+            <img  src={Logo}
+              alt="logo"
             />
+          
             <Button 
-              onClick={this.props.clickConsumidor} variant="contained" color="gray">Voltar para a Página Inicial</Button>
+              onClick={this.props.clickConsumidor} 
+              variant="contained" 
+              color="primary">Voltar para a Página de produtos</Button>
+
           </div>
         </HeaderContainer>
        
