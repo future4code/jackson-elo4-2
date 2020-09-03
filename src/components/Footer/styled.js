@@ -8,7 +8,7 @@ justify-content:space-between;
 align-items: center;
 align-items: space-between;
 background-color: #f2d0a7;
-height: 160px;
+height: 130px;
 margin: 0;
 
 
@@ -21,7 +21,7 @@ display: flex;
 align-items: center;
 border: 1px solid black;
 background-color: #59d9d9;
-height: 80px;
+height: 40px;
 margin: 0;
 
 `
