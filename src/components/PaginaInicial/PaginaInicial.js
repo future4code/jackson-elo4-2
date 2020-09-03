@@ -224,7 +224,7 @@ export default class PaginaInicial extends React.Component {
               {this.state.produtos.map(produto => {
                   return (
                     <Card
-                    clickAddcarrinho={() => this.addAoCarrinho(produto.id)}
+                    clickAddCarrinho={() => this.addAoCarrinho(produto.id)}
                     foto={produto.foto1}
                     titulo={produto.titulo}
                     preco={produto.preco}
