@@ -9,24 +9,35 @@ class Footer extends React.Component {
     return (
     <div>
     <RedesSociais>
-      
+        
+     <div>
+     <h3> Redes Sociais: </h3>
+     </div>
 
-        <p> Redes Sociais </p>
-        <img src={Facebook}
+        <div>
+          <img src={Facebook}
         style={{
-          width: "5%", height: "50%",
+          width: "39%", height: "50%",
         }} />
+        </div>
+
+        <div>
         <img src={Instagram} 
         style={{
-          width: "7%", height: "50%",
+          width: "39%", height: "50%",
         }}
         />
+        </div>
+
+        <div>
         <img src={Twitter}
         style={{
-          width: "5%", height:"50%",
+          width: "10%", height:"50%",
         }}
         />
-     
+        </div>
+
+   
 
     </RedesSociais>
   
