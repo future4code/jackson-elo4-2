@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PaginaInicial from './PaginaInicial/PaginaInicial';
-import ProdutoUnico from './ProdutoUnico/ProdutoUnico';
 import CategoriaUnica from './CategoriaUnica/CategoriaUnica';
 import Fornecedor from './Fornecedor/Fornecedor';
 import Header from './Header/Header';
@@ -43,9 +42,6 @@ export class AppContainer extends React.Component {
   abrePets = () => {
     this.setState({paginaAberta: 'categoria-pets'})
   };
-  abreProdutoUnico = () => {
-    this.setState({paginaAberta: 'produto-unico'})
-  };
   abreFornecedor = () => {
     this.setState({paginaAberta: 'fornecedor'})
   };
@@ -75,13 +71,7 @@ export class AppContainer extends React.Component {
           <Fornecedor
             clickConsumidor={this.abrePaginaInicial}
           />
-        )  
-      case 'produto-unico':
-        return (
-          <ProdutoUnico
-            clickProdUnico={this.abreProdutoUnico}
-          />
-        ); 
+        ) 
       case 'categoria-acessorios':
         return (
           <CategoriaUnica

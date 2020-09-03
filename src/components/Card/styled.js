@@ -9,6 +9,7 @@ export const DivCard = styled.div`
   color: #616161;
   margin: 0 37px 37px 0;
   text-align: center;
+  cursor: pointer;
   > img {
     border-radius: 15px 15px  0 0 ;
     height: 270px;
