@@ -1,14 +1,20 @@
 import React from 'react';
 import axios from 'axios';
+import { MuiThemeProvider } from '@material-ui/core';
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import Checkbox from '@material-ui/core/Checkbox';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import MenuItem from '@material-ui/core/MenuItem';
+import Select from '@material-ui/core/Select';
 import { 
   DivFormulario, 
   HeaderContainer,
   H1,
-  BotaoCadastrar,
   Rotulo,
-  FormInput,
+  myTheme,
+  useStyles
 } from './styled';
-
 
 class Fornecedor extends React.Component {
 
@@ -20,9 +26,6 @@ class Fornecedor extends React.Component {
     preco: 0,
     pagMetodo: "",
     categoria: "",
-    urlFoto1: "",
-    urlFoto2: "",
-    urlFoto3: "",
     parcelas: 0,
   }
 
@@ -42,13 +45,16 @@ class Fornecedor extends React.Component {
     this.setState({categoria: e.target.value})
   }
   onChangeFoto1Input = (e) => {
-    this.setState({urlFoto1: e.target.value})
+    this.state.fotos.push(e.target.value)
+    this.setState({fotos: this.state.fotos})
   }
   onChangeFoto2Input = (e) => {
-    this.setState({urlFoto2: e.target.value})
+    this.state.fotos.push(e.target.value)
+    this.setState({fotos: this.state.fotos})
   }
   onChangeFoto3Input = (e) => {
-    this.setState({urlFoto3: e.target.value})
+    this.state.fotos.push(e.target.value)
+    this.setState({fotos: this.state.fotos})
   }
   onChangeParcelasInput = (e) => {
     this.setState({parcelas: e.target.value})
@@ -61,11 +67,10 @@ class Fornecedor extends React.Component {
       price: this.state.preco,
       paymentMethod: this.state.pagMetodo,
       category: this.state.categoria,
-      photos: this.state.urlFoto1,
-      photos: this.state.urlFoto2,
-      photos: this.state.urlFoto3,
+      photos: this.state.fotos,
       installments: this.state.parcelas
     }
+    console.log(this.state)
     const request = axios.post("https://us-central1-labenu-apis.cloudfunctions.net/eloFourTwo/products", body,
       {
         headers: {
@@ -83,97 +88,163 @@ class Fornecedor extends React.Component {
         preco: 0,
         pagMetodo: "",
         categoria: "",
-        urlFoto1: "",
-        urlFoto2: "",
-        urlFoto3: "",
         parcelas: 0,
+        fotos: [],
       })
       alert("O produto foi cadastrado com sucesso!")
     })
-    .catch(error => {
+    .catch((error) => {
       (error.message === 'Request failed with status code 400')
       ? alert('Não foi possível criar  produto, pois ele já existe!')
       : alert('Desculpe, aconteceu um erro ' + error.message)
       console.log(error)
     });
+    this.setState({ 
+      nomeProduto: "",
+      descricao: "",
+      preco: 0,
+      pagMetodo: "",
+      categoria: "",
+      parcelas: 0,
+      fotos: [],
+    })
   }
 
   render(){
     return (
-      <div>
+      <MuiThemeProvider theme={myTheme}>
         <HeaderContainer>
           <div>
             <img  src="https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F56dee66c-706c-46b5-bbcc-da3a26c77e13%2F3.png?table=block&id=346cc3e8-d869-469e-bf24-298de602529f&width=770&userId=&cache=v2"
             alt="logo"
             />
-            <button onClick={this.props.clickConsumidor}>Voltar para a Página Inicial</button>
+            <Button 
+              onClick={this.props.clickConsumidor} variant="contained" color="gray">Voltar para a Página Inicial</Button>
           </div>
         </HeaderContainer>
        
         <DivFormulario>
-          <H1>Cadastro de produto</H1>
+          <H1>CADASTRO DE PRODUTO</H1>
           <Rotulo for="nome">Nome:</Rotulo>
-          <FormInput type="text" id="nome" 
+          <TextField 
+            label="" 
+            variant="outlined" 
+            style={{ width: 400 }} 
+            type="text" 
+            id="nome" 
             value={this.state.nomeProduto}
             onChange={this.onChangeNomeInput}
           />
           <Rotulo for="desc">Descrição:</Rotulo>
-          <FormInput type="text" id="desc"
+          <TextField 
+            label="" 
+            variant="outlined" 
+            style={{ width: 400 }} 
+            type="text" 
+            id="desc"
             value={this.state.descricao}
             onChange={this.onChangeDescInput}
           />
           <Rotulo for="preco">Preço:</Rotulo>
-          <input type="number" id="preco" 
+          <TextField 
+            label="" 
+            variant="outlined" 
+            type="number" 
+            id="preco" 
             value={this.state.preco}
             onChange={this.onChangePrecoInput}
           />
           <Rotulo for="categoria">Categoria:</Rotulo>
-          <select id="categoria">
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Acessórios</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Bijuteria</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Casamento</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Decoração</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Eco</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Festa</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Infantil</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Papelaria</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Pets</option>
-            <option value={this.state.categoria} onChange={this.onChangeCategoriaInput}>Religiosos</option>
-          </select>
+          <Select
+            variant="outlined" 
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select"
+            color="primary"
+            style={{ width: 200 }}
+            onChange={this.onChangeCategoriaInput}>
+            <MenuItem value={""}></MenuItem>
+            <MenuItem value={"acessorios"}>Acessórios</MenuItem>
+            <MenuItem value={"bijuteria"}>Bijuteria</MenuItem>
+            <MenuItem value={"casamento"}>Casamento</MenuItem>
+            <MenuItem value={"decoracao"}>Decoração</MenuItem>
+            <MenuItem value={"eco"}>Eco</MenuItem>
+            <MenuItem value={"festa"}>Festa</MenuItem>
+            <MenuItem value={"infantil"}>Infantil</MenuItem>
+            <MenuItem value={"papelaria"}>Papelaria</MenuItem>
+            <MenuItem value={"pets"}>Pets</MenuItem>
+            <MenuItem value={"religiosos"}>Religiosos</MenuItem>
+          </Select>
           <Rotulo for="foto">Foto (URL):</Rotulo>
-          <FormInput type="url" id="foto" placeholder="Link para foto 1" value={this.state.urlFoto1} onChange={this.onChangeFoto1Input}></FormInput>
-          <FormInput type="url" id="foto" placeholder="Link para foto 2" value={this.state.urlFoto2} onChange={this.onChangeFoto2Input}></FormInput>
-          <FormInput type="url" id="foto" placeholder="Link para foto 3" value={this.state.urlFoto3} onChange={this.onChangeFoto3Input}></FormInput>
+          <TextField 
+            label="" 
+            variant="outlined" 
+            style={{ width: 400 }}
+            type="url" id="foto" 
+            placeholder="Link para foto 1" 
+            onChange={this.onChangeFoto1Input}>
+          </TextField>
+          <TextField 
+            label="" 
+            variant="outlined" 
+            style={{ width: 400 }} 
+            type="url" 
+            id="foto" 
+            placeholder="Link para foto 2" 
+            onChange={this.onChangeFoto2Input}>
+          </TextField>
+          <TextField 
+            label="" 
+            variant="outlined" 
+            style={{ width: 400 }} 
+            type="url" 
+            id="foto" 
+            placeholder="Link para foto 3" 
+            onChange={this.onChangeFoto3Input}>
+          </TextField>
           <p>Método de pagamento:</p>
-          <Rotulo for="pag1">Cartão de crédito</Rotulo>
-          <input type="checkbox" id="pag1"
-            value={this.state.pagMetodo}
+          <FormControlLabel
+            value={"credito"}
+            control={<Checkbox color="primary" />}
+            label="Cartão de crédito"
+            labelPlacement="end"
             onChange={this.onChangePagInput}
           />
-          <Rotulo for="pag2">Cartão de débito</Rotulo>
-          <input type="checkbox" id="pag2"
-            value={this.state.pagMetodo}
+          <FormControlLabel
+            value={"debito"}
+            control={<Checkbox color="primary" />}
+            label="Cartão de débito"
+            labelPlacement="end"
             onChange={this.onChangePagInput}
           />
-          <Rotulo for="pag3">Boleto</Rotulo>
-          <input type="checkbox" id="pag3"
-            value={this.state.pagMetodo}
-            onChange={this.onChangePagInput} 
+          <FormControlLabel
+            value={"boleto"}
+            control={<Checkbox color="primary" />}
+            label="Boleto"
+            labelPlacement="end"
+            onChange={this.onChangePagInput}
           />
           <Rotulo for="preco">Número de parcelas:</Rotulo>
-          <input type="number" id="preco"
+          <TextField 
+            label="" 
+            variant="outlined" 
+            type="number" 
+            id="preco"
             value={this.state.parcelas}
             onChange={this.onChangeParcelasInput}
           />
-
-          <BotaoCadastrar onClick={this.adicionarProdutos}>CADASTRAR</BotaoCadastrar>
-
+          <br></br>
+          <Button 
+            onClick={this.adicionarProdutos} 
+            color="secondary" 
+            variant="contained"
+            style={{ width: 200 }} 
+            >
+            <strong>CADASTRAR</strong>
+          </Button>
 
         </DivFormulario>
 
-  
-
-      </div>
+      </MuiThemeProvider>
     );
   };
 };
