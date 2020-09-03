@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const DivCard = styled.div`
-  width: 27%;
+  width: 25%;
   border-radius: 15px;
   box-shadow: 2px 2px 4px #c7c7c7;
   background: white;

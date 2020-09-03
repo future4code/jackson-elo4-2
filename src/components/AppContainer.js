@@ -12,7 +12,6 @@ export class AppContainer extends React.Component {
     paginaAberta: 'pagina-inicial'
   };
 
-
   // Funções para abrir as páginas após eventos de cliques:
   abreAcessorios = () => {
     this.setState({paginaAberta: 'categoria-acessorios'})
@@ -52,8 +51,7 @@ export class AppContainer extends React.Component {
   };
   abrePaginaInicial = () => {
     this.setState({paginaAberta: 'pagina-inicial'})
-  }
-
+  };
 
   renderizaPaginas = () => {
     switch (this.state.paginaAberta) {
@@ -84,50 +82,69 @@ export class AppContainer extends React.Component {
         ); 
       case 'categoria-acessorios':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+            titulo={'Acessórios'}
+          />
       );
       case 'categoria-bijuteria':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Bijuteria'}
+          />
       );
       case 'categoria-casamento':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Casamento'}
+          />
         )
       case 'categoria-decoracao':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Decoração'}
+          />
         );
       case 'categoria-eco':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Eco'}
+          />
         );
       case 'categoria-religiosos':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Religiosos'}
+          />
         );
       case 'categoria-festa':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Festa'}
+          />
         );
       case 'categoria-infantil':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Infantil'}
+          />
         );  
       case 'categoria-papelaria':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Papelaria'}
+          />
         );
       case 'categoria-pets':
         return (
-          <CategoriaUnica/>
+          <CategoriaUnica
+          titulo={'Pets'}
+          />
         );
     };
   };
   render() {
     return (
       <div>
-        
         {this.state.paginaAberta === 'fornecedor' ||
           <Header
             clickPaginaInicial={this.abrePaginaInicial}
