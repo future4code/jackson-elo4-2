@@ -1,5 +1,6 @@
 import React from 'react';
 import {HeaderContainer, Filtro, Menu} from "./styled"
+import Logo from '../../Img/logo.png'
 
 
 
@@ -8,7 +9,7 @@ class Header extends React.Component {
     return (
     <HeaderContainer>
        <div>
-          <img  src="https://files.slack.com/files-pri/TLAVDH7C2-F019JRKNGS3/logo.png"
+          <img  src={Logo}
            alt="logo"
            />
            <Filtro>
