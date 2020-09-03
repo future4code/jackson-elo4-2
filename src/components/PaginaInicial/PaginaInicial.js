@@ -1,13 +1,15 @@
 import React from 'react';
 import Carrinho from '../Carrinho/Carrinho';
 import Card from '../Card/Card';
+import CarrinhoLogo from '../../Img/carrinho-logo.svg'
 import {
   CategoriasContainer,
   ContainerPaginaInicial,
   CarrinhoContainer,
   CardsContainer,
   CardsColecao,
-  HeaderCards
+  HeaderCards,
+  ImgCarrinho
 } from './styled.js';
 
 const produtos = [
@@ -235,9 +237,9 @@ export default class PaginaInicial extends React.Component {
             </CardsColecao>
           </CardsContainer>
           {this.state.carrinhoAberto && this.renderizaCarrinho()}
-          <button onClick={this.alterarCarrinho}>
-            abrir carrinho
-          </button>
+          <ImgCarrinho onClick={this.alterarCarrinho}>
+            <img src={CarrinhoLogo}/>
+          </ImgCarrinho>
         </ContainerPaginaInicial>
       </div>
     );

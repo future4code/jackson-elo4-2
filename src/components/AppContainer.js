@@ -78,7 +78,9 @@ export class AppContainer extends React.Component {
         )  
       case 'produto-unico':
         return (
-          <ProdutoUnico/>
+          <ProdutoUnico
+            clickProdUnico={this.abreProdutoUnico}
+          />
         ); 
       case 'categoria-acessorios':
         return (
