@@ -30,7 +30,7 @@ export const HeaderContainer = styled.div`
         margin: 10px auto;
         justify-content:space-between;
         > img{
-            width:50px;
+            width:147px;
         }
     }
     border-top:2px solid orange;
@@ -59,3 +59,5 @@ export const useStyles = makeStyles((theme) => ({
     width: '25ch',
   },
 }));
+
+   
