@@ -15,6 +15,13 @@ export default class PaginaInicial extends React.Component {
     carrinhoAberto: false
   }
 // reservado para logica do carrinho
+alterarCarrinho = () =>{
+  this.setState({
+    carrinhoAberto:!this.state.carrinhoAberto
+  })
+}
+
+
 
 
 
