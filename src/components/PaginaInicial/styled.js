@@ -55,4 +55,7 @@ export const ImgCarrinho = styled.div`
   position: fixed;
   bottom: 50px;
   right: 50px;
+  :hover{
+    background: #47a9ad;
+  }
 `

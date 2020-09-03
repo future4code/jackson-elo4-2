@@ -1,7 +1,8 @@
 import React from 'react';
 import Carrinho from '../Carrinho/Carrinho';
 import Card from '../Card/Card';
-import CarrinhoLogo from '../../Img/carrinho-logo.svg'
+import CarrinhoLogo from '../../Img/carrinho-logo.svg';
+import ProdutoUnico from '../ProdutoUnico/ProdutoUnico';
 import {
   CategoriasContainer,
   ContainerPaginaInicial,
@@ -128,7 +129,8 @@ export default class PaginaInicial extends React.Component {
     produtos,
     carrinho: [],
     carrinhoAberto: false,
-    totalCarrinho: 0
+    totalCarrinho: 0, 
+    paginaAberta: 'pagina-inicial'
   };
 
   // Usando ciclos de vida, pois aqui não estamos usando API
@@ -203,11 +205,23 @@ export default class PaginaInicial extends React.Component {
       </CarrinhoContainer>
     );
   }; 
+  
+  abreProdutoUnico = () => {
+    this.setState({paginaAberta: 'produto-unico'})
+  };
 
   render() {
+    const produtoUnico = () => {
+      if (this.state.paginaAberta === 'produto-unico') {
+       return (
+        <ProdutoUnico/>
+       )
+      };
+    };
     return (
       <div>
-        <ContainerPaginaInicial carrinhoAberto={this.state.carrinhoAberto}>
+        {this.state.paginaAberta === 'produto-unico' ||
+        (<ContainerPaginaInicial carrinhoAberto={this.state.carrinhoAberto}>
           <CategoriasContainer>
             <h3 onClick={this.props.clickAcessorios}>Acessórios</h3>
             <h3 onClick={this.props.clickBijuteria}>Bijuteria</h3>
@@ -226,6 +240,7 @@ export default class PaginaInicial extends React.Component {
               {this.state.produtos.map(produto => {
                   return (
                     <Card
+                    clickProdUnico={this.abreProdutoUnico}
                     clickAddCarrinho={() => this.addAoCarrinho(produto.id)}
                     foto={produto.foto1}
                     titulo={produto.titulo}
@@ -240,7 +255,8 @@ export default class PaginaInicial extends React.Component {
           <ImgCarrinho onClick={this.alterarCarrinho}>
             <img src={CarrinhoLogo}/>
           </ImgCarrinho>
-        </ContainerPaginaInicial>
+        </ContainerPaginaInicial>)
+        }
       </div>
     );
   };
