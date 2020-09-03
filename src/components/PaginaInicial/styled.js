@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 export const CategoriasContainer = styled.div`
-  width: 300px;
+  width: 200px;
+  padding-left: 40px;
+  padding-top: 30px;
 `
 export const ContainerPaginaInicial = styled.div`
   display: grid;
@@ -20,5 +22,15 @@ export const CarrinhoContainer = styled.div`
   }
 `
 export const CardsContainer = styled.div`
-  
+  background: #ebebeb; 
+  padding-left: 55px;
+`
+export const CardsColecao = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+`
+export const HeaderCards = styled.div`
+  padding-top: 20px;
+  height: 50px;
+  text-align: center;
 `
