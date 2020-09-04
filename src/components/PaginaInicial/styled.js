@@ -11,10 +11,17 @@ export const CategoriasContainer = styled.div`
       color: #f2970b;
     }
   }
+  @media (width: 415px) {
+    width: 100%;
+  }
 `
 export const ContainerPaginaInicial = styled.div`
   display: grid;
   grid-template-columns: ${(props) => props.carrinhoAberto ? '1fr 3fr 1fr' : '1fr 3fr'};
+  @media (max-width: 415px){
+    display: flex;
+    flex-direction: column-reverse;
+  }
 `
 export const CarrinhoContainer = styled.div`
   @media (max-width: 415px){
@@ -31,16 +38,27 @@ export const CarrinhoContainer = styled.div`
 export const CardsContainer = styled.div`
   background: #ebebeb; 
   padding-left: 55px;
+  @media (max-width: 415px) {
+    width: 100%;
+  }
 `
 export const CardsColecao = styled.div`
   display: flex;
   flex-wrap: wrap;
+  @media (max-width: 415px) {
+    margin-top: 20px;
+    text-align: center;
+  }
 `
 export const HeaderCards = styled.div`
   padding-top: 20px;
   height: 50px;
   display: flex;
   justify-content: space-between;
+  @media (max-width: 415px) {
+    flex-direction: column;
+    text-align: center;
+  }
 `
 export const ImgCarrinho = styled.div`
   width: 70px;
@@ -58,5 +76,10 @@ export const ImgCarrinho = styled.div`
   right: 50px;
   :hover{
     background: #47a9ad;
+  }
+  @media (max-width: 415px){
+    z-index: 10;
+    bottom: 70px; 
+    left: 20px;;
   }
 `
