@@ -5,7 +5,7 @@ class ProdutoUnicoInicial extends React.Component {
   render() {
     return (
       <Container>
-        <h1>{this.props.tituloProduto}</h1>
+        <h1>{this.props.tituloProduto} - R$ {this.props.preco},00</h1>
         <div>
           <img src={this.props.foto1}/>
           <img src={this.props.foto2}/>

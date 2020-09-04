@@ -8,6 +8,7 @@ import Button from '@material-ui/core/Button';
 // import Typography from '@material-ui/core/Typography';
 
 
+
 export default class ProdutoUnico extends React.Component {
   state = {
     produtoAtual: ""
@@ -16,9 +17,11 @@ export default class ProdutoUnico extends React.Component {
   render() {
     return (
       <div>
+
         <div>
           <h1>{this.props.tituloProduto} - R$ {this.props.preco},00</h1>
         </div>
+
         <div>
           <img src={this.props.foto1}/>
           <img src={this.props.foto2}/>
@@ -46,7 +49,11 @@ export default class ProdutoUnico extends React.Component {
     )
   }
 }
+
 {/* <CardContent>
+
+<CardContent>
+
         <Typography className={classes.title} color="textSecondary" gutterBottom>
           Word of the Day
         </Typography>
@@ -61,4 +68,6 @@ export default class ProdutoUnico extends React.Component {
           <br />
           {'"a benevolent smile"'}
         </Typography>
+
       </CardContent> */}
+
