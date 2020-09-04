@@ -4,6 +4,7 @@ import CategoriaUnica from './CategoriaUnica/CategoriaUnica';
 import Fornecedor from './Fornecedor/Fornecedor';
 import Header from './Header/Header';
 import Footer from './Footer/Footer';
+import QuemSomos from './QuemSomos/QuemSomos';
 
 export class AppContainer extends React.Component {
 
@@ -48,6 +49,9 @@ export class AppContainer extends React.Component {
   abrePaginaInicial = () => {
     this.setState({paginaAberta: 'pagina-inicial'})
   };
+  abreQuemSomos = () => {
+    this.setState({paginaAberta: 'quem-somos'})
+  };
 
   renderizaPaginas = () => {
     switch (this.state.paginaAberta) {
@@ -72,6 +76,10 @@ export class AppContainer extends React.Component {
             clickConsumidor={this.abrePaginaInicial}
           />
         ) 
+        case 'quem-somos':
+        return (
+          <QuemSomos/>
+        )
       case 'categoria-acessorios':
         return (
           <CategoriaUnica
@@ -139,6 +147,7 @@ export class AppContainer extends React.Component {
       <div>
         {this.state.paginaAberta === 'fornecedor' ||
           <Header
+            clickQuemSomos={this.abreQuemSomos}
             clickPaginaInicial={this.abrePaginaInicial}
             clickFornecedor={this.abreFornecedor}
           />

@@ -3,6 +3,7 @@ import Carrinho from '../Carrinho/Carrinho';
 import Card from '../Card/Card';
 import CarrinhoLogo from '../../Img/carrinho-logo.svg';
 import ProdutoUnico from '../ProdutoUnico/ProdutoUnico';
+import FiltroTitulo from '../FiltroTitulo/FiltroTitulo';
 import {
   CategoriasContainer,
   ContainerPaginaInicial,
@@ -130,8 +131,13 @@ export default class PaginaInicial extends React.Component {
     carrinho: [],
     carrinhoAberto: false,
     totalCarrinho: 0, 
-    paginaAberta: 'pagina-inicial'
+    paginaAberta: 'pagina-inicial',
+    valorBusca: ''
   };
+
+  onChangeBusca = e => {
+    this.setState({valorBusca: e.target.value})
+  }
 
   // Usando ciclos de vida, pois aqui não estamos usando API
   componentDidUpdate() {
@@ -146,6 +152,14 @@ export default class PaginaInicial extends React.Component {
     (this.state.carrinhoAberto === false) 
     ? this.setState({carrinhoAberto: true})
     : this.setState({carrinhoAberto: false})  
+  };
+
+  filtrarProdutos() {
+    const {produtos, valorBusca} = this.state
+    let produtosFiltrados = produtos.filter(produto => {
+    return produto.titulo.toLowerCase().indexOf(valorBusca.toLowerCase()) > -1
+  })
+  return produtosFiltrados
   };
 
   // Função ao clicar em adicionar ao carrinho
@@ -211,6 +225,7 @@ export default class PaginaInicial extends React.Component {
   };
 
   render() {
+    const produtosFiltrados = this.filtrarProdutos()
     const produtoUnico = () => {
       if (this.state.paginaAberta === 'produto-unico') {
        return (
@@ -235,9 +250,15 @@ export default class PaginaInicial extends React.Component {
             <h3 onClick={this.props.clickReligiosos}>Religiosos</h3>
           </CategoriasContainer>
           <CardsContainer>
-            <HeaderCards>Produtos visualizados</HeaderCards>
+            <HeaderCards>
+              Produtos visualizados:
+              <FiltroTitulo
+                valorBusca={this.state.valorBusca}
+                mudarBusca={this.onChangeBusca}
+              />
+            </HeaderCards>
             <CardsColecao>
-              {this.state.produtos.map(produto => {
+              {produtosFiltrados.map(produto => {
                   return (
                     <Card
                     clickProdUnico={this.abreProdutoUnico}
