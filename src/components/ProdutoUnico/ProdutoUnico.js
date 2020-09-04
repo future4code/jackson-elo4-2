@@ -1,7 +1,12 @@
 import React from 'react'
-import Carrinho from "../Carrinho/Carrinho"
 import Button from '@material-ui/core/Button';
 import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
+import Card from '@material-ui/core/Card';
+import CardActions from '@material-ui/core/CardActions';
+import CardContent from '@material-ui/core/CardContent';
+import Button from '@material-ui/core/Button';
+import Typography from '@material-ui/core/Typography';
+
 
 export default class ProdutoUnico extends React.Component {
   state = {
@@ -11,30 +16,49 @@ export default class ProdutoUnico extends React.Component {
   render() {
     return (
       <div>
-       <div>
-        src={this.props.fotos} 
-       </div>
-       <div>
-        <h4>{this.props.nomeProduto}</h4>
-        <p>R$ {this.props.preco}</p>
-        <p>Categoria: {this.props.categoria}</p>
-        <p>Descrição: {this.props.descricao}</p>
-        <p>Método de pagamento aceito: {this.props.pagMetodo} </p>
-        <p>Número máximo de parcelas: {this.props.parcelas}</p>
-       </div>
-       <Button
+        <CardContent>
+          <Typography>{this.props.tituloProduto} - R$ {this.props.preco},00</Typography>
+        </CardContent>
+        <div>
+          <img src={this.props.foto1}/>
+          <img src={this.props.foto2}/>
+          <img src={this.props.foto3}/>
+        </div>
+        <div>
+          <ul>
+            <h3>Método de pagamento:</h3>
+            <li>{this.props.metodoPag}</li>
+            <li>Em até {this.props.parcelas}x</li>
+          </ul>
+          <br></br>
+          <p>Categoria: {this.props.categoria}</p>
+          
+        </div>
+        <Button
           onClick={this.props.clickAddCarrinho}
           variant="contained"
           color="gray"
           startIcon={<AddShoppingCartIcon />}
           ><small>Add ao carrinho</small> 
         </Button>
-        
-          
-        <Carrinho/>
-          
   
       </div>
     )
   }
 }
+<CardContent>
+        <Typography className={classes.title} color="textSecondary" gutterBottom>
+          Word of the Day
+        </Typography>
+        <Typography variant="h5" component="h2">
+          be{bull}nev{bull}o{bull}lent
+        </Typography>
+        <Typography className={classes.pos} color="textSecondary">
+          adjective
+        </Typography>
+        <Typography variant="body2" component="p">
+          well meaning and kindly.
+          <br />
+          {'"a benevolent smile"'}
+        </Typography>
+      </CardContent>
