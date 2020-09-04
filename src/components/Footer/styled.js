@@ -26,5 +26,9 @@ margin: 0;
 
 `
 
+export const Container = styled.footer`
+  width: 100%;
+`
+
 
 

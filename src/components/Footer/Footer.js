@@ -3,11 +3,12 @@ import {RedesSociais, Desenvolvedores}from "./styled.js";
 import Facebook from "../../Img/Facebook.jpg"
 import Instagram from "../../Img/Instagram.png";
 import Twitter from "../../Img/Twitter.png";
+import {Container} from './styled';
 
 class Footer extends React.Component {
   render(){
     return (
-    <div>
+    <Container>
     <RedesSociais>
         
      <div>
@@ -44,7 +45,7 @@ class Footer extends React.Component {
     <Desenvolvedores>
       <p> <b> Desenvolvido por Turma Jackson</b> </p>
     </Desenvolvedores>
-    </div>
+    </Container>
     );
   };
 };
