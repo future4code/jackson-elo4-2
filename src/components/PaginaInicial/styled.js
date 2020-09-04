@@ -39,7 +39,8 @@ export const CardsColecao = styled.div`
 export const HeaderCards = styled.div`
   padding-top: 20px;
   height: 50px;
-  text-align: center;
+  display: flex;
+  justify-content: space-between;
 `
 export const ImgCarrinho = styled.div`
   width: 70px;

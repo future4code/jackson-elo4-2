@@ -6,8 +6,11 @@ import AddShoppingCartIcon from '@material-ui/icons/AddShoppingCart';
 class Card extends React.Component {
   render(){
     return (
-    <DivCard onClick={this.props.clickProdUnico}>
-      <img src={this.props.foto}/>
+    <DivCard>
+      <img 
+        src={this.props.foto} 
+        onClick={this.props.clickProdUnico}
+      />
       <h4>{this.props.titulo}</h4>
       <p>R$ {this.props.preco}</p>
       <Button
