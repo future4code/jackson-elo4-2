@@ -125,6 +125,7 @@ export default class PaginaInicial extends React.Component {
           return (
             <ProdutoUnicoInicial
               tituloProduto={produto.titulo}
+              preco={produto.preco}
               foto1={produto.foto1}
               foto2={produto.foto2}
               foto3={produto.foto3}
