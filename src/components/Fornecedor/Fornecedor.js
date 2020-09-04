@@ -184,7 +184,8 @@ class Fornecedor extends React.Component {
             label="" 
             variant="outlined" 
             style={{ width: 400 }}
-            type="url" id="foto" 
+            type="url" 
+            id="foto" 
             placeholder="Link para foto 1" 
             onChange={this.onChangeFoto1Input}>
           </TextField>
