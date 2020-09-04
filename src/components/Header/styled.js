@@ -4,6 +4,7 @@ export const HeaderContainer = styled.div`
   border-top: 2px solid orange;
   height: 70px;
   box-shadow: 0 0 3px gray;
+
   @media (max-width: 415px){
   width:100%;
   }
@@ -16,18 +17,18 @@ export const HeaderContainer = styled.div`
     align-items:center;
 
     @media (max-width: 415px){
-    display:flex;
-    align-items:center;
-    width:100vh;
+    width:100vw;
+    height:67%;
+    
    
   
   }
     > img {
       height:50px;
       @media (max-width: 415px){
-        width:50px;
-        height:50px;
-        margin-left: 45px;
+        height: 30px;
+        margin-left: 15px;
+
       }
 
     }
@@ -38,6 +39,11 @@ export const HeaderContainer = styled.div`
 `;
 
 export const Menu = styled.div`
+ @media (max-width: 415px){
+        display: flex;
+       align-self: center;
+       width: 100%;
+ }
     > span{
         color: #4e4f4f;
         margin-left: 45px;
@@ -45,11 +51,14 @@ export const Menu = styled.div`
         font-size: 110%;
         cursor:pointer;
         :hover{
-            color:#5ce1e6;
-            @media (max-width: 415px){
-              font-size:90%;
-            }
-        }
+            color:#5ce1e6; }
+
+        @media (max-width: 415px){
+          font-size: 12px;
+          margin-left: 27px;
+
+         
+  }
     }
 `
    
