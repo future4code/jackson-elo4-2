@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import { MuiThemeProvider } from '@material-ui/core';
+import { MuiThemeProvider, Input } from '@material-ui/core';
 import Button from '@material-ui/core/Button';
 import TextField from '@material-ui/core/TextField';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -25,9 +25,11 @@ class Fornecedor extends React.Component {
     nomeProduto: "",
     descricao: "",
     preco: 0,
-    pagMetodo: "",
+    pagMetodo: {},
     categoria: "",
     parcelas: 0,
+
+
   }
 
   onChangeNomeInput = (e) => {
@@ -40,7 +42,7 @@ class Fornecedor extends React.Component {
     this.setState({preco: e.target.value})
   }
   onChangePagInput = (e) => {
-    this.setState({pagMetodo: e.target.value})
+    this.setState({pagMetodo:e.target.value},()=>{console.log(this.state.pagMetodo)})
   }
   onChangeCategoriaInput = (e) => {
     this.setState({categoria: e.target.value})
@@ -48,6 +50,7 @@ class Fornecedor extends React.Component {
   onChangeFoto1Input = (e) => {
     this.state.fotos.push(e.target.value)
     this.setState({fotos: this.state.fotos})
+
   }
   onChangeFoto2Input = (e) => {
     this.state.fotos.push(e.target.value)
@@ -61,6 +64,34 @@ class Fornecedor extends React.Component {
     this.setState({parcelas: e.target.value})
   }
 
+  // botaoResetar = () =>{
+  //   Array.from(document.querySelectorAll("input")).forEach(
+  //     input => (input.value="") 
+  //   );
+  //   itemvalues:[{}]
+  // });
+    // obs1:^ unica solução que achei pra resetar os valores de fotos, por ser uma array
+  // this.setState({
+  // this.state.fotos.length = 0;
+  // this.setState({
+  //   produtos:"",
+  //   nomeProduto:"",
+  //   descricao:"",
+  //   preco:"",
+  //   pagMetodo:"",
+  //   categoria:"",
+  //   categoria:"",
+  //   fotos:"",
+  //   parcelas:"",
+  // })
+  // };
+// obs2:^por algum motivo, o then ali em baixo, nao esta mudando o estado,
+//  tive que invocar mudança de estado nessa funçao pra resetar a string
+
+// obs3: n consegui entender como fazer o post funcionar sem ter q atualizar a pag
+// outro problema que surgiu foi que quando tu tenta editar as fotos as vezes
+// apartir da 2 vez que tu inputa valores no campo foto ele gera um erro de
+// que this.state.push (onchange das fotos) is not a function.
   adicionarProdutos = () => {
     const body = {
       name: this.state.nomeProduto,
@@ -100,158 +131,150 @@ class Fornecedor extends React.Component {
       : alert('Desculpe, aconteceu um erro ' + error.message)
       console.log(error)
     });
-    this.setState({ 
-      nomeProduto: "",
-      descricao: "",
-      preco: 0,
-      pagMetodo: "",
-      categoria: "",
-      parcelas: 0,
-      fotos: [],
-    })
+
   }
 
   render(){
     return (
       <MuiThemeProvider theme={myTheme}>
-        <HeaderContainer>
-          <div>
-            <img  src={Logo}
-              alt="logo"
-            />
-          
-            <Button 
-              onClick={this.props.clickConsumidor} 
-              variant="contained" 
-              color="primary">Voltar para a Página de produtos</Button>
-
-          </div>
-        </HeaderContainer>
-       
-        <DivFormulario>
-          <H1>CADASTRO DE PRODUTO</H1>
-          <Rotulo for="nome">Nome:</Rotulo>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            style={{ width: 400 }} 
-            type="text" 
-            id="nome" 
-            value={this.state.nomeProduto}
-            onChange={this.onChangeNomeInput}
+      <HeaderContainer>
+        <div>
+          <img  src={Logo}
+            alt="logo"
           />
-          <Rotulo for="desc">Descrição:</Rotulo>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            style={{ width: 400 }} 
-            type="text" 
-            id="desc"
-            value={this.state.descricao}
-            onChange={this.onChangeDescInput}
-          />
-          <Rotulo for="preco">Preço:</Rotulo>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            type="number" 
-            id="preco" 
-            value={this.state.preco}
-            onChange={this.onChangePrecoInput}
-          />
-          <Rotulo for="categoria">Categoria:</Rotulo>
-          <Select
-            variant="outlined" 
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select"
-            color="primary"
-            style={{ width: 200 }}
-            onChange={this.onChangeCategoriaInput}>
-            <MenuItem value={""}></MenuItem>
-            <MenuItem value={"acessorios"}>Acessórios</MenuItem>
-            <MenuItem value={"bijuteria"}>Bijuteria</MenuItem>
-            <MenuItem value={"casamento"}>Casamento</MenuItem>
-            <MenuItem value={"decoracao"}>Decoração</MenuItem>
-            <MenuItem value={"eco"}>Eco</MenuItem>
-            <MenuItem value={"festa"}>Festa</MenuItem>
-            <MenuItem value={"infantil"}>Infantil</MenuItem>
-            <MenuItem value={"papelaria"}>Papelaria</MenuItem>
-            <MenuItem value={"pets"}>Pets</MenuItem>
-            <MenuItem value={"religiosos"}>Religiosos</MenuItem>
-          </Select>
-          <Rotulo for="foto">Foto (URL):</Rotulo>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            style={{ width: 400 }}
-            type="url" 
-            id="foto" 
-            placeholder="Link para foto 1" 
-            onChange={this.onChangeFoto1Input}>
-          </TextField>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            style={{ width: 400 }} 
-            type="url" 
-            id="foto" 
-            placeholder="Link para foto 2" 
-            onChange={this.onChangeFoto2Input}>
-          </TextField>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            style={{ width: 400 }} 
-            type="url" 
-            id="foto" 
-            placeholder="Link para foto 3" 
-            onChange={this.onChangeFoto3Input}>
-          </TextField>
-          <p>Método de pagamento:</p>
-          <FormControlLabel
-            value={"credito"}
-            control={<Checkbox color="primary" />}
-            label="Cartão de crédito"
-            labelPlacement="end"
-            onChange={this.onChangePagInput}
-          />
-          <FormControlLabel
-            value={"debito"}
-            control={<Checkbox color="primary" />}
-            label="Cartão de débito"
-            labelPlacement="end"
-            onChange={this.onChangePagInput}
-          />
-          <FormControlLabel
-            value={"boleto"}
-            control={<Checkbox color="primary" />}
-            label="Boleto"
-            labelPlacement="end"
-            onChange={this.onChangePagInput}
-          />
-          <Rotulo for="preco">Número de parcelas:</Rotulo>
-          <TextField 
-            label="" 
-            variant="outlined" 
-            type="number" 
-            id="preco"
-            value={this.state.parcelas}
-            onChange={this.onChangeParcelasInput}
-          />
-          <br></br>
           <Button 
-            onClick={this.adicionarProdutos} 
-            color="secondary" 
-            variant="contained"
-            style={{ width: 200 }} 
-            >
-            <strong>CADASTRAR</strong>
-          </Button>
-
-        </DivFormulario>
-
-      </MuiThemeProvider>
-    );
-  };
+            onClick={this.props.clickConsumidor} 
+            variant="contained" 
+            color="primary">Voltar para a Página de produtos</Button>
+        </div>
+      </HeaderContainer>
+      <DivFormulario>
+        <H1>CADASTRO DE PRODUTO</H1>
+        <Rotulo for="nome">Nome:</Rotulo>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          style={{ width: 400 }} 
+          type="text" 
+          id="nome" 
+          value={this.state.nomeProduto}
+          onChange={this.onChangeNomeInput}
+        />
+        <Rotulo for="desc">Descrição:</Rotulo>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          style={{ width: 400 }} 
+          type="text" 
+          id="desc"
+          value={this.state.descricao}
+          onChange={this.onChangeDescInput}
+        />
+        <Rotulo for="preco">Preço:</Rotulo>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          type="number" 
+          id="preco" 
+          value={this.state.preco}
+          onChange={this.onChangePrecoInput}
+        />
+        <Rotulo for="categoria">Categoria:</Rotulo>
+        <Select
+          variant="outlined" 
+          labelId="demo-simple-select-outlined-label"
+          id="demo-simple-select"
+          color="primary"
+          style={{ width: 200 }}
+          onChange={this.onChangeCategoriaInput}>
+          <MenuItem value={""}></MenuItem>
+          <MenuItem value={"acessorios"}>Acessórios</MenuItem>
+          <MenuItem value={"bijuteria"}>Bijuteria</MenuItem>
+          <MenuItem value={"casamento"}>Casamento</MenuItem>
+          <MenuItem value={"decoracao"}>Decoração</MenuItem>
+          <MenuItem value={"eco"}>Eco</MenuItem>
+          <MenuItem value={"festa"}>Festa</MenuItem>
+          <MenuItem value={"infantil"}>Infantil</MenuItem>
+          <MenuItem value={"papelaria"}>Papelaria</MenuItem>
+          <MenuItem value={"pets"}>Pets</MenuItem>
+          <MenuItem value={"religiosos"}>Religiosos</MenuItem>
+        </Select>
+        <Rotulo for="foto">Foto (URL):</Rotulo>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          style={{ width: 400 }}
+          type="url" 
+          id="foto" 
+          placeholder="Link para foto 1" 
+          onChange={this.onChangeFoto1Input}>
+        </TextField>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          style={{ width: 400 }} 
+          type="url" 
+          id="foto" 
+          placeholder="Link para foto 2" 
+          onChange={this.onChangeFoto2Input}>
+        </TextField>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          style={{ width: 400 }} 
+          type="url" 
+          id="foto" 
+          placeholder="Link para foto 3" 
+          onChange={this.onChangeFoto3Input}>
+        </TextField>
+        <p>Método de pagamento:</p>
+        <FormControlLabel
+          value={"credito"}
+          control={<Checkbox color="primary" />}
+          label="Cartão de crédito"
+          labelPlacement="end"
+          onChange={this.onChangePagInput}
+        />
+        <FormControlLabel
+          value={"debito"}
+          control={<Checkbox color="primary" />}
+          label="Cartão de débito"
+          labelPlacement="end"
+          onChange={this.onChangePagInput}
+        />
+        <FormControlLabel
+          value={"boleto"}
+          control={<Checkbox color="primary" />}
+          label="Boleto"
+          labelPlacement="end"
+          onChange={this.onChangePagInput}
+        />
+        <Rotulo for="preco">Número de parcelas:</Rotulo>
+        <TextField 
+          label="" 
+          variant="outlined" 
+          type="number" 
+          id="preco"
+          value={this.state.parcelas}
+          onChange={this.onChangeParcelasInput}
+        />
+        <br></br>
+        <Button 
+          onClick={this.adicionarProdutos} 
+          color="secondary" 
+          variant="contained"
+          style={{ width: 200 }} 
+          >
+          <strong>CADASTRAR</strong>
+        </Button>
+        {/* <button
+            onClick={this.botaoResetar}
+            >Resetar
+        </button> */}
+        {/* button da funçao resetar la em cima */}
+      </DivFormulario>
+    </MuiThemeProvider>
+  );
+};
 };
 export default Fornecedor;
