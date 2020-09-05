@@ -40,8 +40,8 @@ export const CardsContainer = styled.div`
   padding-left: 55px;
   @media (max-width: 415px) {
     width: 100%;
-    padding-left: 0;
-    text-align: center;
+    padding: 0 0 20px 0;
+
   }
 `
 export const CardsColecao = styled.div`
@@ -75,13 +75,15 @@ export const ImgCarrinho = styled.div`
   border: 1px solid gray;
   cursor: pointer;
   position: fixed;
-  bottom: 50px;
+  bottom: 65px;
   right: 50px;
   :hover{
     background: #47a9ad;
   }
   @media (max-width: 415px){
     z-index: 10;
-    bottom: 50px;
+    bottom: 60px; 
+    left: 20px;
+
   }
 `

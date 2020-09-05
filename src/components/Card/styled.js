@@ -16,7 +16,8 @@ export const DivCard = styled.div`
     width: 100%
   }
   @media (max-width: 415px) {
-    width: 80%;
-    margin: 10px 0;
+    width: 60%;
+    margin: 10px auto;
+
   }
 `
