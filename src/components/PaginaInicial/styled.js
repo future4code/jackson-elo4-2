@@ -40,6 +40,8 @@ export const CardsContainer = styled.div`
   padding-left: 55px;
   @media (max-width: 415px) {
     width: 100%;
+    padding-left: 0;
+    text-align: center;
   }
 `
 export const CardsColecao = styled.div`
@@ -48,6 +50,7 @@ export const CardsColecao = styled.div`
   @media (max-width: 415px) {
     margin-top: 20px;
     text-align: center;
+    padding-left: 50px;
   }
 `
 export const HeaderCards = styled.div`
@@ -79,7 +82,6 @@ export const ImgCarrinho = styled.div`
   }
   @media (max-width: 415px){
     z-index: 10;
-    bottom: 70px; 
-    left: 20px;;
+    bottom: 50px;
   }
 `
