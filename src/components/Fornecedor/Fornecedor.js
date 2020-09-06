@@ -9,6 +9,7 @@ import MenuItem from '@material-ui/core/MenuItem';
 import Select from '@material-ui/core/Select';
 import Logo from '../../Img/logo.png'
 import { 
+  DivCentro,
   DivFormulario, 
   HeaderContainer,
   H1,
@@ -64,34 +65,6 @@ class Fornecedor extends React.Component {
     this.setState({parcelas: e.target.value})
   }
 
-  // botaoResetar = () =>{
-  //   Array.from(document.querySelectorAll("input")).forEach(
-  //     input => (input.value="") 
-  //   );
-  //   itemvalues:[{}]
-  // });
-    // obs1:^ unica solução que achei pra resetar os valores de fotos, por ser uma array
-  // this.setState({
-  // this.state.fotos.length = 0;
-  // this.setState({
-  //   produtos:"",
-  //   nomeProduto:"",
-  //   descricao:"",
-  //   preco:"",
-  //   pagMetodo:"",
-  //   categoria:"",
-  //   categoria:"",
-  //   fotos:"",
-  //   parcelas:"",
-  // })
-  // };
-// obs2:^por algum motivo, o then ali em baixo, nao esta mudando o estado,
-//  tive que invocar mudança de estado nessa funçao pra resetar a string
-
-// obs3: n consegui entender como fazer o post funcionar sem ter q atualizar a pag
-// outro problema que surgiu foi que quando tu tenta editar as fotos as vezes
-// apartir da 2 vez que tu inputa valores no campo foto ele gera um erro de
-// que this.state.push (onchange das fotos) is not a function.
   adicionarProdutos = () => {
     const body = {
       name: this.state.nomeProduto,
@@ -145,26 +118,31 @@ class Fornecedor extends React.Component {
           <Button 
             onClick={this.props.clickConsumidor} 
             variant="contained" 
+            size="small"
             color="primary">Voltar para a Página de produtos</Button>
+           
         </div>
+      
       </HeaderContainer>
+      <DivCentro>
       <DivFormulario>
         <H1>CADASTRO DE PRODUTO</H1>
         <Rotulo for="nome">Nome:</Rotulo>
         <TextField 
           label="" 
           variant="outlined" 
-          style={{ width: 400 }} 
+          style={{ width: 325 }} 
           type="text" 
           id="nome" 
           value={this.state.nomeProduto}
           onChange={this.onChangeNomeInput}
         />
         <Rotulo for="desc">Descrição:</Rotulo>
+      
         <TextField 
           label="" 
           variant="outlined" 
-          style={{ width: 400 }} 
+          style={{ width: 325 }} 
           type="text" 
           id="desc"
           value={this.state.descricao}
@@ -203,7 +181,7 @@ class Fornecedor extends React.Component {
         <TextField 
           label="" 
           variant="outlined" 
-          style={{ width: 400 }}
+          style={{ width: 325 }}
           type="url" 
           id="foto" 
           placeholder="Link para foto 1" 
@@ -212,7 +190,7 @@ class Fornecedor extends React.Component {
         <TextField 
           label="" 
           variant="outlined" 
-          style={{ width: 400 }} 
+          style={{ width: 325 }} 
           type="url" 
           id="foto" 
           placeholder="Link para foto 2" 
@@ -221,7 +199,7 @@ class Fornecedor extends React.Component {
         <TextField 
           label="" 
           variant="outlined" 
-          style={{ width: 400 }} 
+          style={{ width: 325 }} 
           type="url" 
           id="foto" 
           placeholder="Link para foto 3" 
@@ -267,12 +245,8 @@ class Fornecedor extends React.Component {
           >
           <strong>CADASTRAR</strong>
         </Button>
-        {/* <button
-            onClick={this.botaoResetar}
-            >Resetar
-        </button> */}
-        {/* button da funçao resetar la em cima */}
       </DivFormulario>
+      </DivCentro>
     </MuiThemeProvider>
   );
 };
