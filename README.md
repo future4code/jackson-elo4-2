@@ -1,6 +1,6 @@
 ## *Elo4 - Projeto Labenu*
 > Feito com React - Por Carolina Della Nina, Thiago de Brito, Yvini Mayza, Luana Pereira e Alice Souza.
-### Link > [wiry-force.surge.sh](http://wiry-force.surge.sh/)
+### Link > [lackadaisical-porter.surge.sh](http://lackadaisical-porter.surge.sh/)
 ### O que funciona: 
 - Duas áreas separadas no site, uma para consumidor e outra para fornecedor
 - Cadastro de produtos
