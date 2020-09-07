@@ -254,140 +254,140 @@ class Fornecedor extends React.Component {
       </MuiThemeProvider>
     );
   };
-        //     onClick={this.props.clickConsumidor} 
-        //     variant="contained" 
-        //     size="small"
-        //     color="primary">Voltar para a Página de produtos</Button>
+//             onClick={this.props.clickConsumidor} 
+//             variant="contained" 
+//             size="small"
+//             color="primary">Voltar para a Página de produtos</Button>
            
-        // </div>
+//         // </div>
       
-      </HeaderContainer>
-      <DivCentro>
-      <DivFormulario>
-        <H1>CADASTRO DE PRODUTO</H1>
-        <Rotulo for="nome">Nome:</Rotulo>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          style={{ width: 325 }} 
-          type="text" 
-          id="nome" 
-          value={this.state.nomeProduto}
-          onChange={this.onChangeNomeInput}
-        />
-        <Rotulo for="desc">Descrição:</Rotulo>
+//        </HeaderContainer>
+//       <DivCentro>
+//       <DivFormulario>
+//         <H1>CADASTRO DE PRODUTO</H1>
+//         <Rotulo for="nome">Nome:</Rotulo>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           style={{ width: 325 }} 
+//           type="text" 
+//           id="nome" 
+//           value={this.state.nomeProduto}
+//           onChange={this.onChangeNomeInput}
+//         />
+//         <Rotulo for="desc">Descrição:</Rotulo>
       
-        <TextField 
-          label="" 
-          variant="outlined" 
-          style={{ width: 325 }} 
-          type="text" 
-          id="desc"
-          value={this.state.descricao}
-          onChange={this.onChangeDescInput}
-        />
-        <Rotulo for="preco">Preço:</Rotulo>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          type="number" 
-          id="preco" 
-          value={this.state.preco}
-          onChange={this.onChangePrecoInput}
-        />
-        <Rotulo for="categoria">Categoria:</Rotulo>
-        <Select
-          variant="outlined" 
-          labelId="demo-simple-select-outlined-label"
-          id="demo-simple-select"
-          color="primary"
-          style={{ width: 200 }}
-          onChange={this.onChangeCategoriaInput}>
-          <MenuItem value={""}></MenuItem>
-          <MenuItem value={"acessorios"}>Acessórios</MenuItem>
-          <MenuItem value={"bijuteria"}>Bijuteria</MenuItem>
-          <MenuItem value={"casamento"}>Casamento</MenuItem>
-          <MenuItem value={"decoracao"}>Decoração</MenuItem>
-          <MenuItem value={"eco"}>Eco</MenuItem>
-          <MenuItem value={"festa"}>Festa</MenuItem>
-          <MenuItem value={"infantil"}>Infantil</MenuItem>
-          <MenuItem value={"papelaria"}>Papelaria</MenuItem>
-          <MenuItem value={"pets"}>Pets</MenuItem>
-          <MenuItem value={"religiosos"}>Religiosos</MenuItem>
-        </Select>
-        <Rotulo for="foto">Foto (URL):</Rotulo>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          style={{ width: 325 }}
-          type="url" 
-          id="foto" 
-          placeholder="Link para foto 1" 
-          onChange={this.onChangeFoto1Input}>
-        </TextField>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          style={{ width: 325 }} 
-          type="url" 
-          id="foto" 
-          placeholder="Link para foto 2" 
-          onChange={this.onChangeFoto2Input}>
-        </TextField>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          style={{ width: 325 }} 
-          type="url" 
-          id="foto" 
-          placeholder="Link para foto 3" 
-          onChange={this.onChangeFoto3Input}>
-        </TextField>
-        <p>Método de pagamento:</p>
-        <FormControlLabel
-          value={"credito"}
-          control={<Checkbox color="primary" />}
-          label="Cartão de crédito"
-          labelPlacement="end"
-          onChange={this.onChangePagInput}
-        />
-        <FormControlLabel
-          value={"debito"}
-          control={<Checkbox color="primary" />}
-          label="Cartão de débito"
-          labelPlacement="end"
-          onChange={this.onChangePagInput}
-        />
-        <FormControlLabel
-          value={"boleto"}
-          control={<Checkbox color="primary" />}
-          label="Boleto"
-          labelPlacement="end"
-          onChange={this.onChangePagInput}
-        />
-        <Rotulo for="preco">Número de parcelas:</Rotulo>
-        <TextField 
-          label="" 
-          variant="outlined" 
-          type="number" 
-          id="preco"
-          value={this.state.parcelas}
-          onChange={this.onChangeParcelasInput}
-        />
-        <br></br>
-        <Button 
-          onClick={this.adicionarProdutos} 
-          color="secondary" 
-          variant="contained"
-          style={{ width: 200 }} 
-          >
-          <strong>CADASTRAR</strong>
-        </Button>
-      </DivFormulario>
-      </DivCentro>
-    </MuiThemeProvider>
-  );
-};
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           style={{ width: 325 }} 
+//           type="text" 
+//           id="desc"
+//           value={this.state.descricao}
+//           onChange={this.onChangeDescInput}
+//         />
+//         <Rotulo for="preco">Preço:</Rotulo>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           type="number" 
+//           id="preco" 
+//           value={this.state.preco}
+//           onChange={this.onChangePrecoInput}
+//         />
+//         <Rotulo for="categoria">Categoria:</Rotulo>
+//         <Select
+//           variant="outlined" 
+//           labelId="demo-simple-select-outlined-label"
+//           id="demo-simple-select"
+//           color="primary"
+//           style={{ width: 200 }}
+//           onChange={this.onChangeCategoriaInput}>
+//           <MenuItem value={""}></MenuItem>
+//           <MenuItem value={"acessorios"}>Acessórios</MenuItem>
+//           <MenuItem value={"bijuteria"}>Bijuteria</MenuItem>
+//           <MenuItem value={"casamento"}>Casamento</MenuItem>
+//           <MenuItem value={"decoracao"}>Decoração</MenuItem>
+//           <MenuItem value={"eco"}>Eco</MenuItem>
+//           <MenuItem value={"festa"}>Festa</MenuItem>
+//           <MenuItem value={"infantil"}>Infantil</MenuItem>
+//           <MenuItem value={"papelaria"}>Papelaria</MenuItem>
+//           <MenuItem value={"pets"}>Pets</MenuItem>
+//           <MenuItem value={"religiosos"}>Religiosos</MenuItem>
+//         </Select>
+//         <Rotulo for="foto">Foto (URL):</Rotulo>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           style={{ width: 325 }}
+//           type="url" 
+//           id="foto" 
+//           placeholder="Link para foto 1" 
+//           onChange={this.onChangeFoto1Input}>
+//         </TextField>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           style={{ width: 325 }} 
+//           type="url" 
+//           id="foto" 
+//           placeholder="Link para foto 2" 
+//           onChange={this.onChangeFoto2Input}>
+//         </TextField>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           style={{ width: 325 }} 
+//           type="url" 
+//           id="foto" 
+//           placeholder="Link para foto 3" 
+//           onChange={this.onChangeFoto3Input}>
+//         </TextField>
+//         <p>Método de pagamento:</p>
+//         <FormControlLabel
+//           value={"credito"}
+//           control={<Checkbox color="primary" />}
+//           label="Cartão de crédito"
+//           labelPlacement="end"
+//           onChange={this.onChangePagInput}
+//         />
+//         <FormControlLabel
+//           value={"debito"}
+//           control={<Checkbox color="primary" />}
+//           label="Cartão de débito"
+//           labelPlacement="end"
+//           onChange={this.onChangePagInput}
+//         />
+//         <FormControlLabel
+//           value={"boleto"}
+//           control={<Checkbox color="primary" />}
+//           label="Boleto"
+//           labelPlacement="end"
+//           onChange={this.onChangePagInput}
+//         />
+//         <Rotulo for="preco">Número de parcelas:</Rotulo>
+//         <TextField 
+//           label="" 
+//           variant="outlined" 
+//           type="number" 
+//           id="preco"
+//           value={this.state.parcelas}
+//           onChange={this.onChangeParcelasInput}
+//         />
+//         <br></br>
+//         <Button 
+//           onClick={this.adicionarProdutos} 
+//           color="secondary" 
+//           variant="contained"
+//           style={{ width: 200 }} 
+//           >
+//           <strong>CADASTRAR</strong>
+//         </Button>
+//       </DivFormulario>
+//       </DivCentro>
+//     </MuiThemeProvider>
+//   );
+// };
 
 };
 export default Fornecedor;
